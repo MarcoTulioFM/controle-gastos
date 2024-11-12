@@ -1,16 +1,17 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/MarcoTulioFM/controle-gastos/api/handlers"
+	"github.com/gin-gonic/gin"
+)
 
 func initializeRoutes(router *gin.Engine) {
 
 	//ROUTES  ITENS
 	itens := router.Group("/v1/api/itens")
 	{
-		itens.POST("/createItens", func(ctx *gin.Context){
-			ctx.JSON(200, "msg: OI")
-		})
-		itens.GET("/getItens",)
+		itens.POST("/createItens", handlers.CreateItens)
+		itens.GET("/getItens", handlers.GetItens)
 		itens.GET("/getItensById",)
 		itens.PUT("/updateItens",)
 		itens.DELETE("/deleteItens")
